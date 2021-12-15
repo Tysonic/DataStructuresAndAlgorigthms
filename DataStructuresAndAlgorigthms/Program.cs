@@ -1,10 +1,10 @@
 ﻿using DataStructuresAndAlgorigthms;
-using static DataStructuresAndAlgorigthms.SinglyLinkedLists;
 
-SinglyLinkedLists singlyLinkedLists=new();
-singlyLinkedLists.PushToStart(10);
-singlyLinkedLists.PushToStart(14);
-singlyLinkedLists.PrintItems();
-Console.WriteLine("Before deleting");
-singlyLinkedLists.DeleteAtEnd();
-singlyLinkedLists.PrintItems();
+QueueFromStack queue = new QueueFromStack();
+queue.EnQueue(4);
+queue.EnQueue(3);
+queue.EnQueue(2);
+queue.EnQueue(1);
+queue.PrintQueue();
+queue.DeQueue();
+queue.PrintQueue();

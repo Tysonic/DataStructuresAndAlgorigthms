@@ -9,7 +9,7 @@ namespace DataStructuresAndAlgorigthms
 {
     public class SinglyLinkedLists
     {
-        Node? head;
+        public Node? head;
         public class Node
         {
             public int data;
@@ -121,6 +121,43 @@ namespace DataStructuresAndAlgorigthms
             {
                 Console.WriteLine(print.data);
                 print = print.next;
+            }
+        }
+        public bool FindLoop(Node h)
+        {
+            HashSet<Node> s = new();
+            while (h != null)
+            {
+                if (s.Contains(h)) return true;
+                s.Add(h);
+                h = h.next;
+            }
+            return false;
+
+        }
+        public void FindAndRemoveLoop(Node h)
+        {
+            if (h == null || h.next == null) return;
+            Node slow = h, fast=h;
+            slow=slow.next;
+            fast=fast.next.next;
+            while (fast != null && fast.next!=null)
+            {
+                if (fast == slow)
+                {
+                        slow = h;
+                        while (slow.next != fast.next)
+                        {
+                            slow = slow.next;
+                            fast = fast.next;
+                        }
+
+                        /* since fast->next is the looping point */
+                        fast.next = null; /* remove loop */
+                    
+                    return; }
+                fast = fast.next.next;
+                slow = slow.next;
             }
         }
        
